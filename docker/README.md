@@ -31,4 +31,5 @@ make run-official
 
 ## Resources
 
-- <https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/>
+- Create image: <https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/>
+- Configure the server: <https://www.nginx.com/blog/deploying-nginx-nginx-plus-docker/#more-info>
