@@ -26,7 +26,7 @@ run-server-official:
 		-d \
 		-p 8080:80 \
 		--name $(DOCKER_CONTAINER_NAME) \
-		-v $(ROOT_DIR)/site-content:/usr/share/nginx/html \
+		--mount type=bind,source=$(ROOT_DIR)/site-content,target=/usr/share/nginx/html,readonly \
 		$(DOCKER_IMAGE_NAME)
 
 open-server:
