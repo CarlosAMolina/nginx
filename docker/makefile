@@ -1,4 +1,5 @@
 DOCKER_IMAGE_NAME=nginx
+DOCKER_CUSTOM_IMAGE_NAME=webserver
 DOCKER_CONTAINER_NAME=web
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -6,8 +7,19 @@ pull-docker-image:
 	# https://hub.docker.com/_/nginx/
 	docker pull $(DOCKER_IMAGE_NAME)
 
-run-server:
-	# https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/
+build-docker-image:
+	docker build -t $(DOCKER_CUSTOM_IMAGE_NAME) .
+
+run-server-custom:
+	docker run \
+		-it \
+		--rm \
+		-d \
+		-p 8080:80 \
+		--name $(DOCKER_CONTAINER_NAME) \
+		$(DOCKER_CUSTOM_IMAGE_NAME)
+
+run-server-official:
 	docker run \
 		-it \
 		--rm \
@@ -23,9 +35,10 @@ open-server:
 stop:
 	docker stop $(DOCKER_CONTAINER_NAME)
 
-run: run-server open-server
+run-official: run-server-official open-server
+
+run-custom: run-server-custom open-server
 
 connect:
 	docker exec -it $(DOCKER_CONTAINER_NAME) /bin/bash
-
 
