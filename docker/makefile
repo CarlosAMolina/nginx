@@ -1,5 +1,6 @@
 DOCKER_IMAGE_NAME=nginx
 DOCKER_CONTAINER_NAME=web
+ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 pull-docker-image:
 	# https://hub.docker.com/_/nginx/
@@ -13,7 +14,7 @@ run-server:
 		-d \
 		-p 8080:80 \
 		--name $(DOCKER_CONTAINER_NAME) \
-		-v /home/x/Software/nginx/docker/site-content:/usr/share/nginx/html \
+		-v $(ROOT_DIR)/site-content:/usr/share/nginx/html \
 		$(DOCKER_IMAGE_NAME)
 
 open-server:
