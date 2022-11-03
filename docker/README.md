@@ -29,6 +29,12 @@ make run-custom
 make run-official
 ```
 
+## Logs
+
+```bash
+make logs
+```
+
 ## Resources
 
 - Create image: <https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/>

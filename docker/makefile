@@ -1,6 +1,7 @@
 DOCKER_IMAGE_NAME=nginx
 DOCKER_CUSTOM_IMAGE_NAME=webserver
 DOCKER_CONTAINER_NAME=web
+DOCKER_VOLUME=nginx-vol
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 pull-docker-image:
@@ -17,7 +18,7 @@ run-server-custom:
 		-d \
 		-p 8080:80 \
 		--name $(DOCKER_CONTAINER_NAME) \
-		--mount source=nginx-vol,target=/var/log/nginx \
+		--mount source=$(DOCKER_VOLUME),target=/var/log/nginx \
 		$(DOCKER_CUSTOM_IMAGE_NAME)
 
 run-server-official:
@@ -35,6 +36,9 @@ open-server:
 
 stop:
 	docker stop $(DOCKER_CONTAINER_NAME)
+
+logs:
+	sudo tail -f /var/lib/docker/volumes/$(DOCKER_VOLUME)/_data/access.log
 
 run-official: run-server-official open-server
 
