@@ -33,3 +33,4 @@ make run-official
 
 - Create image: <https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/>
 - Configure the server (logs, content, etc.): <https://www.nginx.com/blog/deploying-nginx-nginx-plus-docker/#more-info>
+- Configure logs output: <https://notestack.io/public/configure-nginx-logging-in-a-docker-container/874f1253-cf1a-4c62-9d2d-467ab23c258d>

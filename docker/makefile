@@ -17,6 +17,7 @@ run-server-custom:
 		-d \
 		-p 8080:80 \
 		--name $(DOCKER_CONTAINER_NAME) \
+		--mount source=nginx-vol,target=/var/log/nginx \
 		$(DOCKER_CUSTOM_IMAGE_NAME)
 
 run-server-official:
