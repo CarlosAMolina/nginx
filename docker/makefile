@@ -19,6 +19,7 @@ run-server-custom:
 		-p 8080:80 \
 		--name $(DOCKER_CONTAINER_NAME) \
 		--mount source=$(DOCKER_VOLUME),target=/var/log/nginx \
+		--mount source=nginx-content,target=/usr/share/nginx/html,readonly \
 		$(DOCKER_CUSTOM_IMAGE_NAME)
 
 run-server-official:
@@ -31,6 +32,9 @@ run-server-official:
 		--mount type=bind,source=$(ROOT_DIR)/site-content,target=/usr/share/nginx/html,readonly \
 		$(DOCKER_IMAGE_NAME)
 
+copy-web-content:
+	sudo cp site-content/index.html $(docker volume inspect nginx-content  --format '{{.Mountpoint}}')
+
 open-server:
 	firefox http://localhost:8080
 
@@ -42,7 +46,7 @@ logs:
 
 run-official: run-server-official open-server
 
-run-custom: run-server-custom open-server
+run-custom: run-server-custom copy-web-content open-server
 
 connect:
 	docker exec -it $(DOCKER_CONTAINER_NAME) /bin/bash
