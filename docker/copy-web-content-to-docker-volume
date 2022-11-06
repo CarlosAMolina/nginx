@@ -1,5 +1,7 @@
 #!/bin/bash
 
-volume_path=$(docker volume inspect nginx-content  --format '{{.Mountpoint}}')
+volume_name_nginx_logs=$1
+
+volume_path=$(docker volume inspect "${volume_name_nginx_logs}" --format '{{.Mountpoint}}')
 echo "[ÐEBUG] Init copy web content to $volume_path"
 cp site-content/index.html $volume_path
