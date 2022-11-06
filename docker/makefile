@@ -33,7 +33,7 @@ run-server-official:
 		$(DOCKER_IMAGE_NAME)
 
 copy-web-content:
-	sudo cp site-content/index.html $(docker volume inspect nginx-content  --format '{{.Mountpoint}}')
+	/bin/bash copy-web-content-to-docker-volume
 
 open-server:
 	firefox http://localhost:8080
