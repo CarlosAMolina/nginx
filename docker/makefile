@@ -18,19 +18,9 @@ run-server-custom:
 		-d \
 		-p 8080:80 \
 		--name $(DOCKER_CONTAINER_NAME) \
-		--mount source=$(DOCKER_VOLUME),target=/var/log/nginx \
-		--mount source=nginx-content,target=/usr/share/nginx/html,readonly \
+		--mount type=volume,source=$(DOCKER_VOLUME),target=/var/log/nginx \
+		--mount type=volume,source=nginx-content,target=/usr/share/nginx/html,readonly \
 		$(DOCKER_CUSTOM_IMAGE_NAME)
-
-run-server-official:
-	docker run \
-		-it \
-		--rm \
-		-d \
-		-p 8080:80 \
-		--name $(DOCKER_CONTAINER_NAME) \
-		--mount type=bind,source=$(ROOT_DIR)/site-content,target=/usr/share/nginx/html,readonly \
-		$(DOCKER_IMAGE_NAME)
 
 copy-web-content:
 	/bin/bash copy-web-content-to-docker-volume
@@ -43,8 +33,6 @@ stop:
 
 logs:
 	sudo tail -f /var/lib/docker/volumes/$(DOCKER_VOLUME)/_data/access.log
-
-run-official: run-server-official open-server
 
 run-custom: run-server-custom copy-web-content open-server
 
