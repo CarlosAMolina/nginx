@@ -1,0 +1,10 @@
+#!/bin/bash
+
+docker_container_name=$1
+
+echo "[ÐEBUG] Init copy Nginx config to the container $docker_container_name"
+docker cp nginx-config/nginx.conf $docker_container_name:/etc/nginx/
+docker cp nginx-config/default.conf $docker_container_name:/etc/nginx/conf.d/
+
+echo "[ÐEBUG] Init reload Nginx"
+docker exec web nginx -s reload

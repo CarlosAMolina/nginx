@@ -37,6 +37,9 @@ stop-if-running:
 logs:
 	/bin/bash show-nginx-logs $(DOCKER_VOLUME_LOGS)
 
+update-config:
+	/bin/bash update-nginx-config $(DOCKER_CONTAINER_NAME)
+
 run: stop-if-running pull-docker-image build-docker-image run-server-custom copy-web-content open-server
 
 connect:
