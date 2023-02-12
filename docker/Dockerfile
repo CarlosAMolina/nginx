@@ -4,3 +4,6 @@ FROM $docker_image
 # No forward logs to docker log collector.
 RUN unlink /var/log/nginx/access.log
 RUN unlink /var/log/nginx/error.log
+# Config
+COPY nginx-config/nginx.conf /etc/nginx/
+COPY nginx-config/default.conf /etc/nginx/conf.d/
