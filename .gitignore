@@ -1,1 +1,4 @@
 *.swp
+docker/nginx-config/ssl/nginx-selfsigned.crt
+docker/nginx-config/ssl/nginx-selfsigned.key
+

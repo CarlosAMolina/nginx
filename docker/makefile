@@ -19,7 +19,7 @@ run-server-custom:
 		-it \
 		--rm \
 		-d \
-		-p 8080:80 \
+		-p 8080:443 \
 		--name $(DOCKER_CONTAINER_NAME) \
 		--mount type=volume,source=$(DOCKER_VOLUME_LOGS),target=/var/log/nginx \
 		--mount type=volume,source=$(DOCKER_VOLUME_WEB_CONTENT),target=/usr/share/nginx/html,readonly \
@@ -29,7 +29,7 @@ copy-web-content:
 	/bin/bash copy-web-content-to-docker-volume $(DOCKER_VOLUME_WEB_CONTENT)
 
 open-server:
-	firefox http://localhost:8080
+	firefox https://localhost:8080
 
 stop-if-running:
 	docker stop $(DOCKER_CONTAINER_NAME) || true

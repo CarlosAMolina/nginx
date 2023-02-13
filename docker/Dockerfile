@@ -7,3 +7,7 @@ RUN unlink /var/log/nginx/error.log
 # Config
 COPY nginx-config/nginx.conf /etc/nginx/
 COPY nginx-config/default.conf /etc/nginx/conf.d/
+# SSL
+RUN mkdir -p /etc/nginx/ssl
+COPY nginx-config/ssl/nginx-selfsigned.crt /etc/nginx/ssl
+COPY nginx-config/ssl/nginx-selfsigned.key /etc/nginx/ssl

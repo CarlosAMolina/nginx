@@ -2,6 +2,16 @@
 
 Folder to learn Nginx with Docker.
 
+## Configuration
+
+Generate the required files for SSL:
+
+```bash
+cd nginx-config/ssl/
+./generate-cert-and-key
+# You can use the default options.
+```
+
 ## Run
 
 First, download the Nginx Docker image:
