@@ -8,8 +8,8 @@ Generate the required files for SSL:
 
 ```bash
 cd nginx-config/ssl/
-./generate-cert-and-key
-# You can use the default options.
+./generate-files
+# You can answer the questions with the default options.
 ```
 
 ## Run
