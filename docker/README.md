@@ -12,6 +12,13 @@ cd nginx-config/ssl/
 # You can answer the questions with the default options.
 ```
 
+Generate the required files for authentication:
+
+```bash
+cd nginx-config/htpasswd/
+./generate-files
+```
+
 ## Run
 
 First, download the Nginx Docker image:

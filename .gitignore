@@ -2,4 +2,5 @@
 docker/nginx-config/ssl/nginx-selfsigned.crt
 docker/nginx-config/ssl/nginx-selfsigned.key
 docker/nginx-config/ssl/dhparam.pem
+docker/nginx-config/htpasswd/.htpasswd
 

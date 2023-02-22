@@ -12,3 +12,5 @@ RUN mkdir -p /etc/nginx/ssl
 COPY nginx-config/ssl/nginx-selfsigned.crt /etc/nginx/ssl
 COPY nginx-config/ssl/nginx-selfsigned.key /etc/nginx/ssl
 COPY nginx-config/ssl/dhparam.pem /etc/nginx/ssl
+# Basic Auth
+COPY nginx-config/htpasswd/.htpasswd /etc/nginx/

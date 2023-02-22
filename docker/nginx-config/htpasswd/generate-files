@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# This script creates the user `user_test` and password `1234`.
+# You can verify the password with `htpasswd -v .htpasswd user_test`
+
+echo "[DEBUG] Init generate htpasswd"
+htpasswd -bc .htpasswd user_test 1234
+
