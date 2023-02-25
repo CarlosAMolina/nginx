@@ -52,6 +52,18 @@ make run-official
 make logs
 ```
 
+## How to check the Nginx configuration
+
+Once the server is running, you can check the configuration by sending requests or visiting different URLs.
+
+### Frame
+
+Open in your web browser the following file:
+
+```bash
+firefox web-pages-for-testing/frame.html
+```
+
 ## Resources
 
 - Create image: <https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/>
