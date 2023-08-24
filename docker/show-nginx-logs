@@ -1,7 +1,19 @@
 #!/bin/bash
 
 volume_name_nginx_logs=$1
+what_to_show=$2
 
 volume_path=$(docker volume inspect "${volume_name_nginx_logs}" --format '{{.Mountpoint}}')
-tail -f $volume_path/access.log
-#tail -f $volume_path/error.log
+
+echo "[DEBUG] Init show logs"
+if [ $what_to_show == "access" ]; then
+  echo "[DEBUG] Init show access.log"
+  tail -f $volume_path/access.log
+elif [ $what_to_show == "error" ]; then
+  echo "[DEBUG] Init show error.log"
+  tail -f $volume_path/error.log
+else
+  echo "[ERROR] Invalid option: $what_to_show"
+  exit 1
+fi
+

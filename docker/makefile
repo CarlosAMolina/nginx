@@ -35,7 +35,10 @@ stop-if-running:
 	docker stop $(DOCKER_CONTAINER_NAME) || true
 
 logs:
-	/bin/bash show-nginx-logs $(DOCKER_VOLUME_LOGS)
+	/bin/bash show-nginx-logs $(DOCKER_VOLUME_LOGS) access
+
+logs-error:
+	/bin/bash show-nginx-logs $(DOCKER_VOLUME_LOGS) error
 
 update-config:
 	/bin/bash update-nginx-config $(DOCKER_CONTAINER_NAME)
