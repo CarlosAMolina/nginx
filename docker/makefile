@@ -43,6 +43,9 @@ logs-error:
 update-config:
 	/bin/bash update-nginx-config $(DOCKER_CONTAINER_NAME)
 
+get-api-call:
+	curl --insecure https://localhost:8080/hello/john%20doe
+
 run: stop-if-running pull-docker-image build-docker-image run-server-custom copy-web-content open-server
 
 connect:
